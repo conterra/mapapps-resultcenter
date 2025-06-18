@@ -2,7 +2,7 @@
 
 The mapapps resultcenter and selection-resultcenter provide functionality to .
 
-![Screenshot App](https://github.com/conterra/mapapps-printing-enhanced/blob/main/screenshot.JPG)
+![Screenshot App](https://github.com/conterra/mapapps-resultcenter/blob/main/screenshot.png)
 
 ## Build Status
 [![devnet-bundle-snapshot](https://github.com/conterra/mapapps-resultcenter/actions/workflows/devnet-bundle-snapshot.yml/badge.svg)](https://github.com/conterra/mapapps-resultcenter/actions/workflows/devnet-bundle-snapshot.yml)
