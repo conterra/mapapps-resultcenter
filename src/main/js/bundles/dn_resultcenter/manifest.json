@@ -1,0 +1,728 @@
+{
+    "name": "dn_resultcenter",
+    "version": "4.19.3-SNAPSHOT",
+    "title": "Result Center",
+    "description": "The central widget for displaying search results.",
+    "vendor": "con terra GmbH",
+    "productName": "devnet-mapapps-resultcenter",
+    "deprecated": {
+        "message": "This bundle is deprecated. Use the bundle 'result-ui' instead.",
+        "since": "4.14"
+    },
+    "keywords": ["mapping"],
+    "main": "",
+    "layer": "module",
+    "i18n": ["bundle"],
+    "bundle": true,
+    "dependencies": {
+        "apprt-core": "~4.19.3-SNAPSHOT",
+        "apprt-vue": "~4.19.3-SNAPSHOT",
+        "apprt-vuetify": "~4.19.3-SNAPSHOT",
+        "coordinatetransformer": "~4.19.3-SNAPSHOT",
+        "ct": "~4.19.3-SNAPSHOT",
+        "dataview": "~4.19.3-SNAPSHOT",
+        "dojo": "~1.17.3",
+        "esri": "~4.31.6",
+        "graphics": "~4.19.3-SNAPSHOT",
+        "highlights": "~4.19.3-SNAPSHOT",
+        "map-widget": "~4.19.3-SNAPSHOT",
+        "popups": "~4.19.3-SNAPSHOT",
+        "store-api": "~4.19.3-SNAPSHOT"
+    },
+    "optionalDependencies": {
+        "filesaver": "~4.19.3-SNAPSHOT"
+    },
+    "layout-widgets": [
+        {
+            "widgetRole": "resultCenter",
+            "window": {
+                "title": "${ui.window.title}",
+                "dockTool": "resultcenterToggleTool",
+                "marginBox": {
+                    "l": 0,
+                    "h": 345,
+                    "r": 0,
+                    "b": 41
+                },
+                "dockable": true,
+                "minimizeOnClose": true
+            }
+        }
+    ],
+    "components": [
+        {
+            "name": "OpenPopupService",
+            "provides": "resultcenter.OpenPopupService",
+            "propertiesConstructor": true,
+            "properties": {
+                "-popupCannotBeDisplayedMsg": "${ui.popupCannotBeDisplayed}",
+                "-domainAware": false
+            },
+            "references": [
+                {
+                    "name": "_logService",
+                    "providing": "ct.framework.api.LogService"
+                },
+                {
+                    "name": "_mapWidgetModel",
+                    "providing": "map-widget.MapWidgetModel",
+                    "cardinality": "0..1"
+                },
+                {
+                    "name": "_coordinateTransformer",
+                    "providing": "coordinatetransformer.CoordinateTransformer"
+                },
+                {
+                    "name": "_popupTemplateResolver",
+                    "providing": "popups.PopupTemplateResolver"
+                },
+                {
+                    "name": "_visualizer",
+                    "providing": "resultcenter.MapVisualizer"
+                }
+            ]
+        },
+        {
+            "name": "DataModel",
+            "provides": ["resultcenter.DataModel"],
+            "propertiesConstructor": true
+        },
+        {
+            "name": "DataModelMapController",
+            "provides": ["resultcenter.DataModelMapController"],
+            "properties": {
+                "defaultZoomScale": 5000
+            },
+            "references": [
+                {
+                    "name": "dataModel",
+                    "providing": "resultcenter.DataModel",
+                    "policy": "dynamic",
+                    "cardinality": "0..1"
+                },
+                {
+                    "name": "mapWidgetModel",
+                    "providing": "map-widget.MapWidgetModel",
+                    "policy": "dynamic",
+                    "cardinality": "0..1"
+                },
+                {
+                    "name": "popupService",
+                    "providing": "resultcenter.OpenPopupService",
+                    "cardinality": "0..1"
+                }
+            ]
+        },
+        {
+            "name": "ActionController",
+            "propertiesConstructor": true,
+            "properties": {
+                "zoomToFeatures": false,
+                "zoomToSelected": false,
+                "centerSelected": false,
+                "zoomAfterDeletion": false,
+                "zoomToClicked": false,
+                "centerClicked": true,
+                "openPopup": true
+            },
+            "references": [
+                {
+                    "name": "_dataModel",
+                    "providing": "resultcenter.DataModel",
+                    "connect": {
+                        "onDatasourceChanged": "handleDataSourceUpdate",
+                        "onSelectionChanged": "handleOnSelectionChanged",
+                        "onDataChanged": "handleOnDataChanged"
+                    }
+                },
+                {
+                    "name": "_dataView",
+                    "providing": "resultcenter.DataView",
+                    "cardinality": "0..1",
+                    "connect": {
+                        "onItemClicked": "handleOnItemClicked"
+                    }
+                },
+                {
+                    "name": "controller",
+                    "providing": "resultcenter.DataModelMapController"
+                }
+            ]
+        },
+        {
+            "name": "FeatureMapVisualizer",
+            "provides": "resultcenter.MapVisualizer",
+            "immediate": true,
+            "enabled": true,
+            "properties": {
+                "useDataViewPaging": false
+            },
+            "references": [
+                {
+                    "name": "_coordinateTransformer",
+                    "providing": "coordinatetransformer.CoordinateTransformer"
+                },
+                {
+                    "name": "_mapWidgetModel",
+                    "providing": "map-widget.MapWidgetModel",
+                    "watch": {
+                        "view": "viewChanged"
+                    }
+                },
+                {
+                    "name": "_highlighterFactory",
+                    "providing": "highlights.HighlighterFactory"
+                },
+                {
+                    "name": "_graphicResolver",
+                    "providing": "resultcenter.GraphicResolverFactory"
+                },
+                {
+                    "name": "_dataModel",
+                    "providing": "resultcenter.DataModel",
+                    "on": {
+                        "datasource-changed": "handleOnDataUpdate"
+                    }
+                },
+                {
+                    "name": "_popupTemplateResolver",
+                    "providing": "popups.PopupTemplateResolver"
+                },
+                {
+                    "name": "_dataViewController",
+                    "providing": "resultcenter.DataViewController",
+                    "cardinality": "0..1"
+                }
+            ]
+        },
+        {
+            "name": "GraphicResolverFactory",
+            "provides": "resultcenter.GraphicResolverFactory",
+            "properties": {
+                "_defaultSymbolLookup": {
+                    "_defaultLookupAttributeName": "type",
+                    "_defaultLookupTable": {
+                        "point": {
+                            "type": "esriSMS",
+                            "style": "esriSMSCircle",
+                            "color": [0, 255, 255, 64],
+                            "size": 16,
+                            "outline": {
+                                "color": [0, 255, 255, 255],
+                                "width": 2
+                            }
+                        },
+                        "point-highlighted": {
+                            "type": "esriSMS",
+                            "style": "esriSMSCircle",
+                            "color": [0, 254, 255, 64],
+                            "size": 16,
+                            "outline": {
+                                "color": [255, 0, 0, 255],
+                                "width": 2
+                            }
+                        },
+                        "point-selected": {
+                            "type": "esriSMS",
+                            "style": "esriSMSCircle",
+                            "color": [0, 255, 0, 64],
+                            "size": 16,
+                            "outline": {
+                                "color": [0, 255, 0, 255],
+                                "width": 2
+                            }
+                        },
+                        "point-selected-highlighted": {
+                            "type": "esriSMS",
+                            "style": "esriSMSCircle",
+                            "color": [0, 254, 0, 64],
+                            "size": 16,
+                            "outline": {
+                                "color": [255, 0, 0, 255],
+                                "width": 2
+                            }
+                        },
+                        "polyline": {
+                            "type": "esriSLS",
+                            "style": "esriSLSSolid",
+                            "color": [0, 255, 255, 255],
+                            "width": 1.3
+                        },
+                        "polyline-highlighted": {
+                            "type": "esriSLS",
+                            "style": "esriSLSSolid",
+                            "color": [255, 0, 0, 255],
+                            "width": 1.3
+                        },
+                        "polyline-selected": {
+                            "type": "esriSLS",
+                            "style": "esriSLSSolid",
+                            "color": [0, 255, 0, 255],
+                            "width": 3
+                        },
+                        "polyline-selected-highligthed": {
+                            "type": "esriSLS",
+                            "style": "esriSLSSolid",
+                            "color": [255, 0, 0, 255],
+                            "width": 1.3
+                        },
+                        "polygon": {
+                            "type": "esriSFS",
+                            "style": "esriSFSSolid",
+                            "color": [0, 255, 255, 64],
+                            "outline": {
+                                "color": [0, 255, 255, 255],
+                                "width": 2
+                            }
+                        },
+                        "polygon-highlighted": {
+                            "type": "esriSFS",
+                            "style": "esriSFSSolid",
+                            "color": [0, 255, 255, 64],
+                            "outline": {
+                                "color": [255, 0, 0, 255],
+                                "width": 2
+                            }
+                        },
+                        "polygon-selected": {
+                            "type": "esriSFS",
+                            "style": "esriSFSSolid",
+                            "color": [0, 255, 0, 64],
+                            "outline": {
+                                "color": [0, 255, 0, 255],
+                                "width": 2
+                            }
+                        },
+                        "polygon-selected-highlighted": {
+                            "type": "esriSFS",
+                            "style": "esriSFSSolid",
+                            "color": [0, 255, 0, 64],
+                            "outline": {
+                                "color": [255, 0, 0, 255],
+                                "width": 2
+                            }
+                        }
+                    }
+                },
+                "symbolLookup": {
+                    "lookupAttributeName": "",
+                    "lookupTable": {}
+                }
+            }
+        },
+        {
+            "name": "DataView",
+            "impl": "dataview/DataView",
+            "provides": ["dijit.Widget", "resultcenter.DataView"],
+            "propertiesConstructor": true,
+            "properties": {
+                "_i18nPath": "ui.dataView",
+                "widgetRole": "resultCenter",
+                "syncFilterOnFilteredStore": false,
+                "showFilter": true,
+                "filterDuringKeyUp": true,
+                "showPager": true,
+                "showViewButtons": false,
+                "itemsPerPage": 50,
+                "domainAware": true,
+                "DGRID": {
+                    "checkboxSelection": true,
+                    "columns": [
+                        {
+                            "matches": {
+                                "name": {
+                                    "$exists": true
+                                }
+                            }
+                        }
+                    ]
+                }
+            },
+            "references": [
+                {
+                    "name": "toolbar",
+                    "providing": "resultcenter.DataViewToolbar",
+                    "cardinality": "0..1"
+                },
+                {
+                    "name": "leftPaneWidget",
+                    "providing": "resultcenter.DataViewLeftPaneWidget",
+                    "cardinality": "0..1"
+                },
+                {
+                    "name": "rightPaneWidget",
+                    "providing": "resultcenter.DataViewRightPaneWidget",
+                    "cardinality": "0..1"
+                },
+                {
+                    "name": "view",
+                    "providing": "resultcenter.DataViewCustomView",
+                    "cardinality": "0..n"
+                },
+                {
+                    "name": "gridColumnsExtender",
+                    "providing": "resultcenter.ColumnsExtender",
+                    "cardinality": "0..n"
+                }
+            ]
+        },
+        {
+            "name": "DataViewToolbar",
+            "impl": "ct/tools/ToolContainer",
+            "provides": ["resultcenter.DataViewToolbar"],
+            "propertiesConstructor": true,
+            "references": [
+                {
+                    "name": "tool",
+                    "providing": "ct.tools.Tool",
+                    "cardinality": "0..n",
+                    "filter": "(toolRole=resultcenter)"
+                }
+            ]
+        },
+        {
+            "name": "DataViewController",
+            "provides": ["resultcenter.DataViewController"],
+            "immediate": true,
+            "properties": {},
+            "references": [
+                {
+                    "name": "dataModel",
+                    "providing": "resultcenter.DataModel",
+                    "cardinality": "1..1"
+                },
+                {
+                    "name": "dataView",
+                    "providing": "resultcenter.DataView",
+                    "cardinality": "1..1"
+                }
+            ]
+        },
+        {
+            "name": "ResultCenterToggleTool",
+            "impl": "ct/tools/Tool",
+            "provides": ["ct.tools.Tool"],
+            "propertiesConstructor": true,
+            "properties": {
+                "id": "resultcenterToggleTool",
+                "title": "${ui.dockTool.title}",
+                "priority": 30,
+                "tooltip": "${ui.dockTool.tooltip}",
+                "iconClass": "icon-doc-checked",
+                "togglable": true,
+                "visibility": false,
+                "rules": {
+                    "noGroup": true
+                }
+            }
+        },
+        {
+            "name": "RemoveResultsCommand",
+            "provides": ["resultcenter.RemoveResultsCommand"],
+            "references": [
+                {
+                    "name": "_dataModel",
+                    "providing": "resultcenter.DataModel"
+                }
+            ]
+        },
+        {
+            "name": "TriggerShowResultCenterCommand",
+            "impl": "./TriggerShowResultCenter",
+            "properties": {
+                "showToolOnData": true,
+                "autoOpen": true,
+                "hideToolOnEmpty": true,
+                "autoClose": true
+            },
+            "references": [
+                {
+                    "name": "_dataModel",
+                    "providing": "resultcenter.DataModel",
+                    "connect": {
+                        "onDatasourceChanged": "handleOnUpdate"
+                    }
+                },
+                {
+                    "name": "tool",
+                    "providing": "ct.tools.Tool",
+                    "filter": "(id=resultcenterToggleTool)"
+                }
+            ]
+        },
+        {
+            "name": "SelectAllResultsCommand",
+            "provides": ["resultcenter.SelectAllResultsCommand"],
+            "references": [
+                {
+                    "name": "_dataModel",
+                    "providing": "resultcenter.DataModel",
+                    "on": {
+                        "datasource-changed": "handleDataSourceChanged"
+                    }
+                }
+            ]
+        },
+        {
+            "name": "SelectExtentTool",
+            "impl": "ct/tools/Tool",
+            "provides": ["ct.tools.Tool"],
+            "propertiesConstructor": true,
+            "properties": {
+                "toolRole": "resultcenter",
+                "id": "rectangleSelectionTool",
+                "title": "${ui.rectangleSelectBtn.title}",
+                "togglable": true,
+                "iconClass": "icon-select-mouse",
+                "priority": 1,
+                "activateHandler": "activateSelection",
+                "deactivateHandler": "deactivateSelection",
+                "rules": {
+                    "storeSupportsGeometryInResultcenter": true
+                }
+            },
+            "references": [
+                {
+                    "name": "handlerScope",
+                    "providing": "resultcenter.SelectionController"
+                }
+            ]
+        },
+        {
+            "name": "SelectAllTool",
+            "impl": "ct/tools/Tool",
+            "provides": ["ct.tools.Tool"],
+            "enabled": true,
+            "propertiesConstructor": true,
+            "properties": {
+                "toolRole": "resultcenter",
+                "id": "selectAllTool",
+                "title": "${ui.selectAllBtn.title}",
+                "iconClass": "icon-select-multiple",
+                "togglable": false,
+                "priority": 1,
+                "clickHandler": "selectAll",
+                "rules": {
+                    "resultcenterHasDatasource": true
+                }
+            },
+            "references": [
+                {
+                    "name": "handlerScope",
+                    "providing": "resultcenter.SelectAllResultsCommand"
+                }
+            ]
+        },
+        {
+            "name": "RemoveAllTool",
+            "impl": "ct/tools/Tool",
+            "provides": ["ct.tools.Tool"],
+            "propertiesConstructor": true,
+            "properties": {
+                "toolRole": "resultcenter",
+                "id": "removeAllTool",
+                "iconClass": "icon-trashcan-detailed",
+                "title": "${ui.removeAllBtn.title}",
+                "togglable": false,
+                "clickHandler": "removeAll",
+                "rules": {
+                    "ruleSuccessProperty": "visibility",
+                    "multipleExecutionsAvailable": false
+                }
+            },
+            "references": [
+                {
+                    "name": "handlerScope",
+                    "providing": "resultcenter.RemoveResultsCommand"
+                }
+            ]
+        },
+        {
+            "name": "RemoveSelectedTool",
+            "impl": "ct/tools/Tool",
+            "provides": ["ct.tools.Tool"],
+            "propertiesConstructor": true,
+            "properties": {
+                "toolRole": "resultcenter",
+                "id": "removeSelectedTool",
+                "title": "${ui.removeSelectedBtn.title}",
+                "togglable": false,
+                "clickHandler": "removeSelected",
+                "iconClass": "icon-selection-delete-selected",
+                "rules": {
+                    "deletableInResultcenter": true,
+                    "minimumSelectedItemsInResultcenter": 1
+                }
+            },
+            "references": [
+                {
+                    "name": "handlerScope",
+                    "providing": "resultcenter.RemoveResultsCommand"
+                }
+            ]
+        },
+        {
+            "name": "DataModelBroadcaster",
+            "references": [
+                {
+                    "name": "_dataModel",
+                    "providing": "resultcenter.DataModel"
+                },
+                {
+                    "name": "_eventService",
+                    "providing": "ct.framework.api.EventService"
+                }
+            ]
+        },
+        {
+            "name": "StoreEventReceiver",
+            "provides": "ct.framework.api.EventHandler",
+            "properties": {
+                "Event-Topics": [
+                    {
+                        "topic": "ct/selection/SELECTION_END",
+                        "method": "receive"
+                    },
+                    {
+                        "topic": "ct/editing/UPDATE_PROCESS_FINISHED",
+                        "method": "_onEditEvent"
+                    }
+                ]
+            },
+            "references": [
+                {
+                    "name": "_dataModel",
+                    "providing": "resultcenter.DataModel"
+                }
+            ]
+        },
+        {
+            "name": "SearchStoreHandler",
+            "provides": ["resultcenter.SearchStoreHandler"],
+            "references": [
+                {
+                    "name": "_dataModel",
+                    "providing": "resultcenter.DataModel",
+                    "connect": {
+                        "onDatasourceChanged": "handleDataSourceUpdate"
+                    }
+                }
+            ]
+        },
+        {
+            "name": "StoreRegistration",
+            "references": [
+                {
+                    "name": "_dataModel",
+                    "providing": "resultcenter.DataModel",
+                    "connect": {
+                        "onDatasourceChanged": "_checkDatasourceRegistration"
+                    }
+                }
+            ]
+        },
+        {
+            "name": "SearchStoreTool",
+            "impl": "ct/tools/Tool",
+            "provides": "ct.tools.Tool",
+            "componentFactory": true,
+            "propertiesConstructor": true,
+            "properties": {
+                "id": "searchStoreTool",
+                "title": "${ui.searchStoreTool.title}",
+                "togglable": false,
+                "toolRole": "toolset",
+                "clickHandler": "showData",
+                "activateHandler": "showData",
+                "deactivateHandler": "clearData",
+                "storeId": "*"
+            },
+            "references": [
+                {
+                    "name": "handlerScope",
+                    "providing": "resultcenter.SearchStoreHandler"
+                },
+                {
+                    "name": "store",
+                    "providing": "ct.api.Store",
+                    "filter": "(id={storeId})"
+                }
+            ]
+        },
+        {
+            "name": "ResultcenterToolRuleProcessor",
+            "provides": ["toolrules.ToolRuleProcessor"],
+            "references": [
+                {
+                    "name": "toolRuleContext",
+                    "providing": "toolrules.ToolRuleContext"
+                },
+                {
+                    "name": "resultcenterDataModel",
+                    "providing": "resultcenter.DataModel"
+                }
+            ]
+        },
+        {
+            "name": "ExportResultsCommand",
+            "provides": ["resultcenter.ExportResultsCommand"],
+            "properties": {
+                "-mimetype": "text/csv",
+                "-filename": "resultcenter.csv",
+                "-separator": ";",
+                "-undefinedValue": "",
+                "-detectExtraFields": false,
+                "_defaultIgnoreFields": [
+                    "selected",
+                    "focus",
+                    "infoTemplate",
+                    "symbol",
+                    "geometry",
+                    "Shape_Area",
+                    "Shape_Length",
+                    "compositeId"
+                ],
+                "-ignoreFields": {
+                    "infoservice": ["data", "point"]
+                },
+                "-exportDomainValues": false
+            },
+            "references": [
+                {
+                    "name": "_dataModel",
+                    "providing": "resultcenter.DataModel"
+                },
+                {
+                    "name": "_fileSaver",
+                    "providing": "filesaver.FileSaver"
+                }
+            ]
+        },
+        {
+            "name": "ExportTool",
+            "impl": "ct/tools/Tool",
+            "provides": ["ct.tools.Tool"],
+            "enabled": true,
+            "propertiesConstructor": true,
+            "properties": {
+                "toolRole": "resultcenter",
+                "id": "exportTool",
+                "title": "${ui.exportTool.title}",
+                "iconClass": "icon-doc-export",
+                "priority": -1,
+                "togglable": false,
+                "clickHandler": "exportSelected",
+                "rules": {
+                    "minimumSelectedItemsInResultcenter": 1,
+                    "resultcenterHasDatasource": true
+                }
+            },
+            "references": [
+                {
+                    "name": "handlerScope",
+                    "providing": "resultcenter.ExportResultsCommand"
+                }
+            ]
+        }
+    ]
+}

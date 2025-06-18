@@ -10,10 +10,11 @@
         "allowedBundles": [
             "agssearch",
             "banner",
+            "console",
+            "dn_selection-resultcenter",
+            "dn_resultcenter",
             "map-init",
             "languagetoggler",
-            "selection-resultcenter",
-            "resultcenter",
             "system",
             "toolset",
             "templatelayout",
