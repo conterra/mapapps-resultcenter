@@ -32,4 +32,8 @@ $ mvn compile -Denv=dev -Pinclude-mapapps-deps
 $ mvn test -P run-js-tests,include-mapapps-deps
 ```
 
+### Run Browser Tests
+http://localhost:9090/resources/jsregistry/root/@conterra/mapapps-mocha-runner/latest/mocha.html?boot=/js/tests/test-init.js&timeout=5000&test=tests-all/tests
+
+
 For more details refer to the [Developer's Guide](https://docs.conterra.de/en/mapapps/latest/developersguide/getting-started/).
