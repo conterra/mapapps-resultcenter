@@ -1,19 +1,24 @@
-# mapapps-devnet-blueprint
+# mapapps-resultcenter
 
-**This project is not intended for use by non-con terra users.** It is designed for the creation of bundles and their releases in GitHub and can access con terra internal infrastructures for this purpose. To develop your own map.apps bundles, use the [mapapps-4-developers project](https://github.com/conterra/mapapps-4-developers).
+The mapapps resultcenter and selection-resultcenter provide functionality to .
 
-This project is a starting point for programming custom map.apps bundles and themes. It contains examples for common tasks such as building widgets with Vue.js or creating your own custom themes.
-You may use this project as a blueprint for starting your own map.apps project.
+![Screenshot App](https://github.com/conterra/mapapps-printing-enhanced/blob/main/screenshot.JPG)
 
-Since both Typescript and Javascript can be used to implement bundles, this project contains two bundles with the same functionality, `sample_camera` implemented in Typescript and `sample_camera_js` implemented in Javascript.
-Initially only the `sample_camera` bundle is included in the `Demo` sample app.
+## Build Status
+[![devnet-bundle-snapshot](https://github.com/conterra/mapapps-resultcenter/actions/workflows/devnet-bundle-snapshot.yml/badge.svg)](https://github.com/conterra/mapapps-resultcenter/actions/workflows/devnet-bundle-snapshot.yml)
 
-For detailed documentation on how to use map.apps for Developers to extend map.apps, see the [map.apps Developer's Guide](https://docs.conterra.de/en/mapapps/latest/developersguide/getting-started/).
+## Sample App
+[T.B.D]
 
-## Software Requirements
+## Installation Guide
+**Requirements:**
+- map.apps 4.20.0 or later
 
-- Java >= 17
-- Maven >= 3.9.0
+Simply add the bundles "dn_resultcenter" and optional the bundle dn_selection-resultcenter to your app.
+
+[dn_resultcenter Documentation](https://github.com/conterra/mapapps-resultcenter/tree/master/src/main/js/bundles/dn_resultcenter)
+
+[dn_resultcenter Documentation](https://github.com/conterra/mapapps-resultcenter/tree/master/src/main/js/bundles/dn_selection-resultcenter)
 
 ## Quick start
 
@@ -31,9 +36,3 @@ $ mvn compile -Denv=dev -Pinclude-mapapps-deps
 # run unit tests
 $ mvn test -P run-js-tests,include-mapapps-deps
 ```
-
-### Run Browser Tests
-http://localhost:9090/resources/jsregistry/root/@conterra/mapapps-mocha-runner/latest/mocha.html?boot=/js/tests/test-init.js&timeout=5000&test=tests-all/tests
-
-
-For more details refer to the [Developer's Guide](https://docs.conterra.de/en/mapapps/latest/developersguide/getting-started/).
