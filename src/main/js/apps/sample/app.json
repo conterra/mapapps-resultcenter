@@ -75,7 +75,7 @@
                 }
             ]
         },
-        "resultcenter": {
+        "dn_resultcenter": {
             "SearchStoreTool": [
                 {
                     "id": "search_stoerungen",

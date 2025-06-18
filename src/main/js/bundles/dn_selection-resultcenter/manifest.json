@@ -22,7 +22,7 @@
         "apprt-streams": "~4.19.3-SNAPSHOT",
         "apprt-binding": "~4.19.3-SNAPSHOT",
         "ct": "~4.19.3-SNAPSHOT",
-        "resultcenter": "~4.19.3-SNAPSHOT",
+        "dn_resultcenter": "~4.19.3-SNAPSHOT",
         "selection-services": "~4.19.3-SNAPSHOT",
         "store-api": "~4.19.3-SNAPSHOT",
         "dojo": "~1.17.3"
