@@ -36,3 +36,7 @@ $ mvn compile -Denv=dev -Pinclude-mapapps-deps
 # run unit tests
 $ mvn test -P run-js-tests,include-mapapps-deps
 ```
+## Theming
+
+Both bundles provide their own styles for map.apps default everlast, winter, spring, summer and autumn themes through a `themes-extension`. Styles provided, are precompiled for an easy usage.
+If you want to create your own theme for a custom project, you find the required less files for bot bundles in src/main/js/theme-custom

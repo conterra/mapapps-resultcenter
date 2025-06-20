@@ -1,0 +1,24 @@
+@import "../themeSettings.less";
+
+.@{themeName} {
+    .ctCollapsed.ctActiveToolIcon_icon-doc-checked .ctCollapseOpposite:before {
+        content: '\e045';
+    }
+    .resultCenter {
+        .ctWindowContentPadding > .dijitDialogPaneContent {
+            padding-top: 0
+        }
+        .ct-data-view__toolbar {
+            padding-top: 5px;
+            padding-bottom: 5px;
+        }
+        .leftPaneWidget {
+            width: 250px;
+            padding: 0 8px 0 0;
+            .vue-base {
+                height: 100%;
+                background: lighten(@ct-dGrid-background-color, 5%);
+            }
+        }
+    }
+}

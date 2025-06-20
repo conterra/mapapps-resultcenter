@@ -72,6 +72,32 @@
             }
         }
     ],
+    "CSS-Themes-Extension": [
+        {
+            "name": "autumn",
+            "files": ["./styles/autumn.css"]
+        },
+        {
+            "name": "everlasting",
+            "files": ["./styles/everlasting.css"]
+        },
+        {
+            "name": "liveconfiguration",
+            "files": ["./styles/liveconfiguration.css"]
+        },
+        {
+            "name": "spring",
+            "files": ["./styles/spring.css"]
+        },
+        {
+            "name": "summer",
+            "files": ["./styles/summer.css"]
+        },
+        {
+            "name": "winter",
+            "files": ["./styles/winter.css"]
+        }
+    ],
     "components": [
         {
             "name": "OpenPopupService",

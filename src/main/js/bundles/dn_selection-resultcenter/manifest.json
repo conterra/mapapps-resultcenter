@@ -27,6 +27,32 @@
         "store-api": "~4.19.3-SNAPSHOT",
         "dojo": "~1.17.3"
     },
+    "CSS-Themes-Extension": [
+        {
+            "name": "autumn",
+            "files": ["./styles/autumn.css"]
+        },
+        {
+            "name": "everlasting",
+            "files": ["./styles/everlasting.css"]
+        },
+        {
+            "name": "liveconfiguration",
+            "files": ["./styles/liveconfiguration.css"]
+        },
+        {
+            "name": "spring",
+            "files": ["./styles/spring.css"]
+        },
+        {
+            "name": "summer",
+            "files": ["./styles/summer.css"]
+        },
+        {
+            "name": "winter",
+            "files": ["./styles/winter.css"]
+        }
+    ],
     "components": [
         {
             "name": "ExecutionsModel",

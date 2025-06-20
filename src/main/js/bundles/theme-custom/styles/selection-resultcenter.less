@@ -1,0 +1,63 @@
+/*
+*
+*   Styling needed for left Pane in ResultCenter when multiresult available
+*
+*    Widget consits of three main elements:
+*   1. .ct-multiresult__header
+*   2. .ct-multiresult__list
+*   3. .ct-multiresult__footer
+*/
+@import "../themeSettings.less";
+
+.@{themeName} {
+
+    .ct-executions-pane {
+        height: 100%;
+        &__header {
+            flex: 0 0 auto;
+            background: @container-background-color;
+            padding: 8px;
+            .caption {
+                color: @disabled-text-color;
+            }
+        }
+        &__list {
+            border: solid @minor-border-color;
+            border-width: 2px 0;
+            flex: 1 1 auto;
+            overflow: auto;
+            .v-list {
+                padding: 0;
+                background: lighten(@ct-dGrid-background-color, 5%);
+                &__tile--active {
+                    background: @container-background-color;
+                }
+                .divider:last-child {
+                    display: none;
+                }
+            }
+            .ct-executions-pane__result-count {
+                color: @text-color;
+                &--muted {
+                    color: @disabled-text-color;
+                }
+            }
+        }
+        &__footer {
+            flex: 0 0 auto;
+            background-color: @container-background-color;
+        }
+        .filter--active {
+            i:after {
+                //noinspection CssNoGenericFontName
+                font-family: mapappsUiFont;
+                content: '\e60d';
+                color: @ct-message-pane-success-color;
+                font-size: 70%;
+                position: absolute;
+                right: 0;
+                bottom: 17%;
+            }
+        }
+    }
+}
