@@ -17,10 +17,10 @@
             "languagetoggler",
             "system",
             "toolset",
+            "selection-ui",
             "templatelayout",
             "template-seasons",
-            "theme-autumn",
-            "custominfo"
+            "theme-autumn"
         ],
         "i18n": [
             "bundle"
@@ -62,32 +62,21 @@
         "agssearch": {
             "AGSStore": [
                 {
-                    "id": "countries",
-                    "url": "https://services.conterra.de/arcgis/rest/services/common/grenzen/MapServer/3",
-                    "title": "${map.countries}",
-                    "fetchIdProperty": true
-                },
-                {
-                    "id": "stoerungen_store",
+                    "id": "stoerungen",
                     "url": "https://services.conterra.de/arcgis/rest/services/mapapps/stoerung/FeatureServer/0",
                     "title": "${map.incidents}",
-                    "fetchIdProperty": true
-                }
-            ]
-        },
-        "dn_resultcenter": {
-            "SearchStoreTool": [
-                {
-                    "id": "search_stoerungen",
-                    "title": "${tools.incidents}",
-                    "storeId": "stoerungen_store",
-                    "iconClass": "icon-sign-warning"
+                    "useIn": [
+                        "selection"
+                    ]
                 },
                 {
-                    "id": "search_countries",
-                    "title": "${tools.countries}",
-                    "storeId": "countries",
-                    "iconClass": "icon-globe-flat"
+                    "id": "trees",
+                    "url": "https://services.conterra.de/arcgis/rest/services/mapapps/Baumkataster_Arten/FeatureServer/0",
+                    "title": "Trees from store",
+                    "fetchIdProperty": true,
+                    "useIn": [
+                        "selection"
+                    ]
                 }
             ]
         },
@@ -101,6 +90,12 @@
                             "type": "AGS_FEATURE",
                             "url": "https://services.conterra.de/arcgis/rest/services/mapapps/stoerung/FeatureServer/0",
                             "title": "${map.incidents}"
+                        },
+                        {
+                            "id": "trees",
+                            "type": "AGS_FEATURE",
+                            "url": "https://services.conterra.de/arcgis/rest/services/mapapps/Baumkataster_Arten/FeatureServer/0",
+                            "title": "${map.trees}"
                         }
                     ]
                 },
