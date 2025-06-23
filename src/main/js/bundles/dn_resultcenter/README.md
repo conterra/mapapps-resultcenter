@@ -1,4 +1,4 @@
-# resultcenter
+# dn_resultcenter
 
 The Result Center bundle is a set of components used to display and visualize content returned as a result of a search request, such as geographic features or tabular data.
 
@@ -6,7 +6,7 @@ By default, the Result Center is located in a dock window at the bottom of the s
 When the Result Center DataModel is filled with new data the features are rendered on the map and a button is displayed in the bottom bar.
 By clicking that button the Result Center window is opened and the results are displayed in a table.
 Clicking a row in the table centers the map at the corresponding feature and opens an info window with additional information.
-Select items by clicking the checkbox.
+Select items by clicking the checkbox. Selected items can be exported e.g. with the report tool ([reporttool bundle](#bundle=reportool@/README.md)).
 
 ## Usage
 

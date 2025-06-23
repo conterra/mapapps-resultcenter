@@ -1,6 +1,6 @@
 # selection-resultcenter
 
-This bundles provides an extension to the user interface of the [resultcenter](#bundle=resultcenter@/README.md) to display and interact with multiple query results from the `SpatialSearchService` of the [selection-services](#bundle=selection-services@/README.md) bundle.
+This bundles provides an extension to the user interface of the [resultcenter](#bundle=dn_resultcenter@/README.md) to display and interact with multiple query results from the `SpatialSearchService` of the [selection-services](#bundle=selection-services@/README.md) bundle.
 
 ## Usage
 
@@ -12,7 +12,7 @@ If the selection is made on multiple data sources/stores, multiple result sets a
 
 ## Constraints
 
-The properties `autoOpen`, `autoClose`, and `hideToolOnEmpty` of the [resultcenter](#bundle=resultcenter@/README.md) bundle are ignored when using this bundle.
+The properties `autoOpen`, `autoClose`, and `hideToolOnEmpty` of the [resultcenter](#bundle=dn_resultcenter@/README.md) bundle are ignored when using this bundle.
 
 ## Configuration reference
 
