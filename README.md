@@ -18,7 +18,7 @@ Simply add the bundles "dn_resultcenter" and optional the bundle dn_selection-re
 
 [dn_resultcenter Documentation](https://github.com/conterra/mapapps-resultcenter/tree/master/src/main/js/bundles/dn_resultcenter)
 
-[dn_resultcenter Documentation](https://github.com/conterra/mapapps-resultcenter/tree/master/src/main/js/bundles/dn_selection-resultcenter)
+[dn_selection-resultcenter Documentation](https://github.com/conterra/mapapps-resultcenter/tree/master/src/main/js/bundles/dn_selection-resultcenter)
 
 ## Quick start
 
