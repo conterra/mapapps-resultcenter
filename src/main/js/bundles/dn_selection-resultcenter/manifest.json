@@ -16,18 +16,18 @@
     "keywords": ["mapping", "selection", "resultcenter"],
     "dependencies": {
         "esri": "~4.31.6",
-        "apprt-core": "~4.19.3-SNAPSHOT",
-        "apprt-vue": "~4.19.3-SNAPSHOT",
-        "apprt-vuetify": "~4.19.3-SNAPSHOT",
-        "apprt-streams": "~4.19.3-SNAPSHOT",
-        "apprt-binding": "~4.19.3-SNAPSHOT",
-        "ct": "~4.19.3-SNAPSHOT",
+        "apprt-core": "^4.19",
+        "apprt-vue": "^4.19",
+        "apprt-vuetify": "^4.19",
+        "apprt-streams": "^4.19",
+        "apprt-binding": "^4.19",
+        "ct": "^4.19",
         "dn_resultcenter": "~4.19.3-SNAPSHOT",
-        "selection-services": "~4.19.3-SNAPSHOT",
-        "store-api": "~4.19.3-SNAPSHOT",
-        "dojo": "~1.17.3"
+        "selection-services": "^4.19",
+        "store-api": "^4.19",
+        "dojo": "^1.17.3"
     },
-    "CSS-Themes-Extension": [
+    "cssThemesExtension": [
         {
             "name": "autumn",
             "files": ["./styles/autumn.css"]

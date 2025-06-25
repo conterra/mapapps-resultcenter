@@ -21,7 +21,7 @@
     xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <groupId>de.conterra.devnet</groupId>
-    <artifactId>mapapps-devnet-blueprint</artifactId>
+    <artifactId>mapapps-resultcenter</artifactId>
     <version>4.19.3-SNAPSHOT</version>
     <packaging>jar</packaging>
     <dependencyManagement>
@@ -389,7 +389,7 @@
                         <configuration>
                             <!-- don't list not shipped bundles in the
                             META-INF\js-registry-packs.properties file -->
-                            <scanPackagesExcludes>apps/**,bundles/sample_tests</scanPackagesExcludes>
+                            <scanPackagesExcludes>apps/**,bundles/tests-all,bundles/theme-custom</scanPackagesExcludes>
                         </configuration>
                     </execution>
                 </executions>
@@ -644,12 +644,12 @@
                             <!--
                             No longer required when the rollup build is in use, because the calculation of the dependencies is done via rollup build.
                             -->
-                            <execution>
+                            <!--<execution>
                                 <id>calculate js dependencies</id>
                                 <goals>
                                     <goal>calculateDependencies</goal>
                                 </goals>
-                            </execution>
+                            </execution>-->
                             <!--
 
                                 The optimizeJS goal is usually no longer required because compression is done via terser (see
