@@ -1,6 +1,6 @@
 # mapapps-resultcenter
 
-The mapapps resultcenter and selection-resultcenter provide functionality to .
+The bundles `dn_resultcenter` and `dn_selection-resultcenter` provide functionality to display tabular data.
 
 ![Screenshot App](https://github.com/conterra/mapapps-resultcenter/blob/main/screenshot.png)
 
