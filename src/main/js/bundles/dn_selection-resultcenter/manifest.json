@@ -37,10 +37,6 @@
             "files": ["./styles/everlasting.css"]
         },
         {
-            "name": "liveconfiguration",
-            "files": ["./styles/liveconfiguration.css"]
-        },
-        {
             "name": "spring",
             "files": ["./styles/spring.css"]
         },
