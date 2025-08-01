@@ -1,6 +1,6 @@
 {
     "name": "dn_resultcenter",
-    "version": "4.19.3-SNAPSHOT",
+    "version": "4.20.0-SNAPSHOT",
     "title": "Result Center",
     "description": "The central widget for displaying search results.",
     "vendor": "con terra GmbH",
@@ -15,22 +15,22 @@
     "i18n": ["bundle"],
     "bundle": true,
     "dependencies": {
-        "apprt-core": "^4.19",
-        "apprt-vue": "^4.19",
-        "apprt-vuetify": "^4.19",
-        "coordinatetransformer": "^4.19",
-        "ct": "^4.19",
-        "dataview": "^4.19",
+        "apprt-core": "^4.20",
+        "apprt-vue": "^4.20",
+        "apprt-vuetify": "^4.20",
+        "coordinatetransformer": "^4.20",
+        "ct": "^4.20",
+        "dataview": "^4.20",
         "dojo": "^1.17.3",
         "esri": "^4.31.6",
-        "graphics": "^4.19",
-        "highlights": "^4.19",
-        "map-widget": "^4.19",
-        "popups": "^4.19",
-        "store-api": "^4.19"
+        "graphics": "^4.20",
+        "highlights": "^4.20",
+        "map-widget": "^4.20",
+        "popups": "^4.20",
+        "store-api": "^4.20"
     },
     "optionalDependencies": {
-        "filesaver": "^4.19"
+        "filesaver": "^4.20"
     },
     "layout-widgets": [
         {
