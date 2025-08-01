@@ -16,8 +16,8 @@
 import { assert } from "chai";
 
 import { sourceId } from "source-info!";
-import Point from "esri/geometry/Point";
-import SpatialReference from "esri/geometry/SpatialReference";
+import Point from "@arcgis/core/geometry/Point";
+import SpatialReference from "@arcgis/core/geometry/SpatialReference";
 import OpenPopupService from "../OpenPopupService";
 
 const WEBMERCATOR_WKID = 102100;

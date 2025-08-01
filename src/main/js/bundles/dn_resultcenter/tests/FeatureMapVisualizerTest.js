@@ -20,7 +20,7 @@ import FeatureMapVisualizer from "../FeatureMapVisualizer";
 import { waitFor } from "test-utils/waitFor";
 import QueryResults from "store-api/QueryResults";
 import Promise from "apprt-core/Promise";
-import SpatialReference from "esri/geometry/SpatialReference";
+import SpatialReference from "@arcgis/core/geometry/SpatialReference";
 
 describe(sourceId, function () {
     it("expect that all items of data model are fetched on data source update", async function () {

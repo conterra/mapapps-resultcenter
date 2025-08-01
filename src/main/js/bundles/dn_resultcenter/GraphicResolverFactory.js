@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { fromJSON } from "esri/symbols/support/jsonUtils";
+import { fromJSON } from "@arcgis/core/symbols/support/jsonUtils";
 import PostfixAttributeTableLookupStrategy from "./PostfixAttributeTableLookupStrategy";
 import ct_url from "ct/_url";
 

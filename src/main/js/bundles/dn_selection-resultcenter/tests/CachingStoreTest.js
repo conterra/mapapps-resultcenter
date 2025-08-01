@@ -20,9 +20,9 @@ import { sourceId } from "source-info!";
 import CachingStore from "../CachingStore";
 import { AsyncInMemoryStore } from "store-api/InMemoryStore";
 import QueryResults from "store-api/QueryResults";
-import Point from "esri/geometry/Point";
-import Extent from "esri/geometry/Extent";
-import SpatialReference from "esri/geometry/SpatialReference";
+import Point from "@arcgis/core/geometry/Point";
+import Extent from "@arcgis/core/geometry/Extent";
+import SpatialReference from "@arcgis/core/geometry/SpatialReference";
 
 const WEBMERCATOR = new SpatialReference({ wkid: 3857 });
 

@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 import replace from "apprt-core/string-replace";
-import Graphic from "esri/Graphic";
+import Graphic from "@arcgis/core/Graphic";
 import DomainAware from "ct/store/DomainAware";
 
 export default function OpenPopupService(opts) {

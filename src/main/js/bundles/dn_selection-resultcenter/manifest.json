@@ -15,7 +15,7 @@
     "i18n": ["bundle"],
     "keywords": ["mapping", "selection", "resultcenter"],
     "dependencies": {
-        "esri": "~4.31.6",
+        "@arcgis/core": "~4.31.6",
         "apprt-core": "^4.20",
         "apprt-vue": "^4.20",
         "apprt-vuetify": "^4.20",

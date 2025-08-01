@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import GraphicsLayer from "esri/layers/GraphicsLayer";
+import GraphicsLayer from "@arcgis/core/layers/GraphicsLayer";
 /**
  * Helper of FeatureMapVisualizer to ensure that graphics rendered to special layer.
  */
