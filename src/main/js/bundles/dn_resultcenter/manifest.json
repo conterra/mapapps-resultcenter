@@ -22,7 +22,7 @@
         "ct": "^4.20",
         "dataview": "^4.20",
         "dojo": "^1.17.3",
-        "@arcgis/core": "^4.31.6",
+        "@arcgis/core": "^4.33.9",
         "graphics": "^4.20",
         "highlights": "^4.20",
         "map-widget": "^4.20",

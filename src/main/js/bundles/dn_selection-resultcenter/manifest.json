@@ -15,14 +15,14 @@
     "i18n": ["bundle"],
     "keywords": ["mapping", "selection", "resultcenter"],
     "dependencies": {
-        "@arcgis/core": "~4.31.6",
+        "@arcgis/core": "~4.33.9",
         "apprt-core": "^4.20",
         "apprt-vue": "^4.20",
         "apprt-vuetify": "^4.20",
         "apprt-streams": "^4.20",
         "apprt-binding": "^4.20",
         "ct": "^4.20",
-        "dn_resultcenter": "~4.20.3-SNAPSHOT",
+        "dn_resultcenter": "~4.20.0-SNAPSHOT",
         "selection-services": "^4.20",
         "store-api": "^4.20",
         "dojo": "^1.17.3"
