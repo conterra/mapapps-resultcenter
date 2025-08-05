@@ -15,22 +15,22 @@
     "i18n": ["bundle"],
     "bundle": true,
     "dependencies": {
-        "apprt-core": "^4.20",
-        "apprt-vue": "^4.20",
-        "apprt-vuetify": "^4.20",
-        "coordinatetransformer": "^4.20",
-        "ct": "^4.20",
-        "dataview": "^4.20",
+        "apprt-core": "^4.20.0-SNAPSHOT",
+        "apprt-vue": "^4.20.0-SNAPSHOT",
+        "apprt-vuetify": "^4.20.0-SNAPSHOT",
+        "coordinatetransformer": "^4.20.0-SNAPSHOT",
+        "ct": "^4.20.0-SNAPSHOT",
+        "dataview": "^4.20.0-SNAPSHOT",
         "dojo": "^1.17.3",
         "@arcgis/core": "^4.33.9",
-        "graphics": "^4.20",
-        "highlights": "^4.20",
-        "map-widget": "^4.20",
-        "popups": "^4.20",
-        "store-api": "^4.20"
+        "graphics": "^4.20.0-SNAPSHOT",
+        "highlights": "^4.20.0-SNAPSHOT",
+        "map-widget": "^4.20.0-SNAPSHOT",
+        "popups": "^4.20.0-SNAPSHOT",
+        "store-api": "^4.20.0-SNAPSHOT"
     },
     "optionalDependencies": {
-        "filesaver": "^4.20"
+        "filesaver": "^4.20.0-SNAPSHOT"
     },
     "layout-widgets": [
         {
