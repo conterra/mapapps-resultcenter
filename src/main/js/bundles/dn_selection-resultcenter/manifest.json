@@ -1,6 +1,6 @@
 {
     "name": "dn_selection-resultcenter",
-    "version": "4.20.0",
+    "version": "4.20.1-SNAPSHOT",
     "title": "Selection Resultcenter Integration",
     "description": "This bundles provides an extension to the user interface of the resultcenter. It adds the ability to display and interact with the results of multiple selections.",
     "vendor": "con terra GmbH",
@@ -16,15 +16,15 @@
     "keywords": ["mapping", "selection", "resultcenter"],
     "dependencies": {
         "@arcgis/core": "~4.33.9",
-        "apprt-core": "^4.20.0",
-        "apprt-vue": "^4.20.0",
-        "apprt-vuetify": "^4.20.0",
-        "apprt-streams": "^4.20.0",
-        "apprt-binding": "^4.20.0",
-        "ct": "^4.20.0",
-        "dn_resultcenter": "~4.20.0",
-        "selection-services": "^4.20.0",
-        "store-api": "^4.20.0",
+        "apprt-core": "^4.20.1-SNAPSHOT",
+        "apprt-vue": "^4.20.1-SNAPSHOT",
+        "apprt-vuetify": "^4.20.1-SNAPSHOT",
+        "apprt-streams": "^4.20.1-SNAPSHOT",
+        "apprt-binding": "^4.20.1-SNAPSHOT",
+        "ct": "^4.20.1-SNAPSHOT",
+        "dn_resultcenter": "~4.20.1-SNAPSHOT",
+        "selection-services": "^4.20.1-SNAPSHOT",
+        "store-api": "^4.20.1-SNAPSHOT",
         "dojo": "^1.17.3"
     },
     "cssThemesExtension": [
