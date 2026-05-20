@@ -63,7 +63,7 @@
             "AGSStore": [
                 {
                     "id": "stoerungen",
-                    "url": "https://services.conterra.de/arcgis/rest/services/mapapps/stoerung/FeatureServer/0",
+                    "url": "https://services.conterra.de/server/rest/services/mapapps/stoerung/FeatureServer/0",
                     "title": "${map.incidents}",
                     "useIn": [
                         "selection"
@@ -71,7 +71,7 @@
                 },
                 {
                     "id": "trees",
-                    "url": "https://services.conterra.de/arcgis/rest/services/mapapps/Baumkataster_Arten/FeatureServer/0",
+                    "url": "https://services.conterra.de/server/rest/services/mapapps/baumkataster_zustand/FeatureServer/0",
                     "title": "Trees from store",
                     "fetchIdProperty": true,
                     "useIn": [
@@ -88,13 +88,13 @@
                         {
                             "id": "stoerungen",
                             "type": "AGS_FEATURE",
-                            "url": "https://services.conterra.de/arcgis/rest/services/mapapps/stoerung/FeatureServer/0",
+                            "url": "https://services.conterra.de/server/rest/services/mapapps/stoerung/FeatureServer/0",
                             "title": "${map.incidents}"
                         },
                         {
                             "id": "trees",
                             "type": "AGS_FEATURE",
-                            "url": "https://services.conterra.de/arcgis/rest/services/mapapps/Baumkataster_Arten/FeatureServer/0",
+                            "url": "https://services.conterra.de/server/rest/services/mapapps/baumkataster_zustand/FeatureServer/0",
                             "title": "${map.trees}"
                         }
                     ]
