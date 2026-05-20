@@ -461,10 +461,10 @@
         </plugins>
     </build>
     <scm>
-        <connection>scm:git:https://github.com/conterra/mapapps-devnet-blueprint.git</connection>
-        <developerConnection>scm:git:https://github.com/conterra/mapapps-devnet-blueprint.git
+        <connection>scm:git:https://github.com/conterra/mapapps-resultcenter.git</connection>
+        <developerConnection>scm:git:https://github.com/conterra/mapapps-resultcenter.git
         </developerConnection>
-        <url>https://github.com/conterra/mapapps-devnet-blueprint</url>
+        <url>https://github.com/conterra/mapapps-resultcenter</url>
         <tag>HEAD</tag>
     </scm>
     <distributionManagement>
